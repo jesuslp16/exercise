@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Alpha2Code__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>Standardized two-letter country abbreviations defined by the International Organization for Standardization (ISO) to represent countries, dependent territories, and special geographic areas.</description>
+    <externalId>true</externalId>
+    <inlineHelpText>Two-letter country abbreviation.</inlineHelpText>
+    <label>Alpha2Code</label>
+    <length>2</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>
