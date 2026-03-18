@@ -7,19 +7,21 @@
   ISCHANGED(OwnerId),
   OR(
     AND(
-      ($Profile.Name = &quot;System Administrator&quot;), 
+    ($Profile.Name = &quot;System Administrator&quot;), 
       ISPICKVAL(LeadSource, &quot;&quot;)
     ),
     AND(
-      ($Profile.Name = &quot;Contract Manager&quot;),
+    ($Profile.Name = &quot;Contract Manager&quot;),
       OR(ISBLANK(Country), ISPICKVAL(LeadSource, &quot;&quot;))
     ),
     AND(
       $Profile.Name != &quot;System Administrator&quot;,
       $Profile.Name != &quot;Contract Manager&quot;,
-      OR(ISBLANK(Country), ISPICKVAL(LeadSource, &quot;&quot;))
-    ),
-    AND(NOT(ISBLANK(NumberOfEmployees)), NumberOfEmployees &lt; 1)
+      OR(ISBLANK(Country), 
+         ISPICKVAL(LeadSource, &quot;&quot;), 
+         ISBLANK(NumberOfEmployees)
+      )
+    )
   )
 )</errorConditionFormula>
     <errorDisplayField>OwnerId</errorDisplayField>
