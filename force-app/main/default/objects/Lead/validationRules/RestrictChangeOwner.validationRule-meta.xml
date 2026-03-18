@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictChangeOwner</fullName>
+    <active>true</active>
+    <description>Don&apos;t allow change the Owner if the User has not filled in the required fields.</description>
+    <errorConditionFormula>AND(
+  ISCHANGED(OwnerId),
+  OR(
+    AND(
+      ($Profile.Name = &quot;System Administrator&quot;), 
+      ISPICKVAL(LeadSource, &quot;&quot;)
+    ),
+    AND(
+      ($Profile.Name = &quot;Contract Manager&quot;),
+      OR(ISBLANK(Country), ISPICKVAL(LeadSource, &quot;&quot;))
+    ),
+    AND(
+      $Profile.Name != &quot;System Administrator&quot;,
+      $Profile.Name != &quot;Contract Manager&quot;,
+      OR(ISBLANK(Country), ISPICKVAL(LeadSource, &quot;&quot;))
+    ),
+    AND(NOT(ISBLANK(NumberOfEmployees)), NumberOfEmployees &lt; 1)
+  )
+)</errorConditionFormula>
+    <errorDisplayField>OwnerId</errorDisplayField>
+    <errorMessage>You cannot change Owner if the required fields are not filled in:
+- System Admin: Lead Source
+- Contract Manager: Country + Lead Source
+- Others: Country + Lead Source + No. Employees (this cannot be less than 1)</errorMessage>
+</ValidationRule>
