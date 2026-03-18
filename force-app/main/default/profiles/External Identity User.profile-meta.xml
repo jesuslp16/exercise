@@ -20,6 +20,14 @@
         <apexClass>CountryLayerSyncBatchTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>LeadCountryLayerService</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>LeadTriggerHandle</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
     <custom>false</custom>
     <userLicense>External Identity</userLicense>
     <userPermissions>
