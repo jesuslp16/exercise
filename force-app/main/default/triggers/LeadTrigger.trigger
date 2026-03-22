@@ -1,11 +1,7 @@
 /**
  * Lead Apex Trigger to execute functionalities depending the context
  */
-trigger LeadTrigger on Lead (before insert, before update) 
+trigger LeadTrigger on Lead (before insert, before update, before delete, after insert, after update, after delete, after undelete) 
 {
-    if (Trigger.isBefore)
-    {
-        if (Trigger.isInsert) LeadTriggerHandle.onBeforeInsert(Trigger.new);
-        if (Trigger.isUpdate) LeadTriggerHandle.onBeforeUpdate(Trigger.new, Trigger.oldMap);
-    }
+    TriggerFactory.execute(new LeadTriggerHandler());
 }
